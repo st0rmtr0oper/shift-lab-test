@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordConfirmText"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:passwordToggleEnabled="true"
+        app:startIconDrawable="@drawable/baseline_lock_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password confirm"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/regButton"
         android:layout_width="wrap_content"
@@ -17,45 +39,26 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/birthText"
-        app:layout_constraintTop_toBottomOf="@+id/birthText" />
-
-    <EditText
-        android:id="@+id/passwordConfirmText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Password confirm"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/passwordText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
-
-    <EditText
-        android:focusable="false"
         android:id="@+id/birthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Date of birth"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/surnameText"
-        app:layout_constraintTop_toBottomOf="@+id/surnameText" />
+        app:layout_constraintBottom_toTopOf="@+id/passwordText"
+        app:layout_constraintStart_toStartOf="@+id/surnameText" />
 
     <EditText
         android:id="@+id/nameText"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:drawableLeft="@drawable/baseline_person_2_24"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
@@ -67,12 +70,35 @@
         android:id="@+id/surnameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="25dp"
         android:ems="10"
         android:hint="Surname"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+        app:layout_constraintBottom_toTopOf="@+id/birthText"
+        app:layout_constraintEnd_toEndOf="@+id/nameText" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordText"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="253dp"
+        android:layout_marginEnd="49dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true"
+        app:startIconDrawable="@drawable/baseline_lock_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

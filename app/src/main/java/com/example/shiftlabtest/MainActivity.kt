@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -21,8 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userName: EditText
     private lateinit var userSurname: EditText
     private lateinit var userBirthday: EditText
-    private lateinit var userPassword: EditText
-    private lateinit var userConfirmedPassword: EditText
+    private lateinit var userPassword: TextInputLayout
+    private lateinit var userConfirmedPassword: TextInputLayout
 
     val myCalendar: Calendar = Calendar.getInstance()
 
@@ -67,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         var name: String = userName.text.toString()
         var surname: String = userSurname.text.toString()
         var birthday: String = userBirthday.text.toString()
-        var password: String = userPassword.text.toString()
-        var confirmedPassword: String = userConfirmedPassword.text.toString()
+        var password: String = userPassword.toString()
+        var confirmedPassword: String = userConfirmedPassword.toString()
 
 
         if (name.isEmpty() || name.length < 2) {
@@ -95,6 +96,9 @@ class MainActivity : AppCompatActivity() {
     private fun showHint(text: EditText?, hint: String) {
         text?.error = hint
         text?.requestFocus()
+    }
+    private fun showHint(text: TextInputLayout?, hint: String) {
+        text?.error = hint
     }
 }
 
