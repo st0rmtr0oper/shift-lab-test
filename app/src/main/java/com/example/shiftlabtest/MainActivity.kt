@@ -1,11 +1,16 @@
 package com.example.shiftlabtest
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
+import androidx.appcompat.app.AppCompatActivity
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userPassword: EditText
     private lateinit var userConfirmedPassword: EditText
 
+    val myCalendar: Calendar = Calendar.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,8 +36,16 @@ class MainActivity : AppCompatActivity() {
         userPassword = findViewById(R.id.passwordText)
         userConfirmedPassword = findViewById(R.id.passwordConfirmText)
 
-
-
+        val date =
+            OnDateSetListener { _, year, month, day ->
+                myCalendar.set(Calendar.YEAR, year)
+                myCalendar.set(Calendar.MONTH, month)
+                myCalendar.set(Calendar.DAY_OF_MONTH, day)
+                updateLabel()
+            }
+        userBirthday.setOnClickListener {
+            DatePickerDialog(this@MainActivity, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
         registerButton = findViewById(R.id.regButton)
         registerButton.setOnClickListener {
@@ -38,8 +53,14 @@ class MainActivity : AppCompatActivity() {
             if (check) {
                 val intent = Intent(this, SecondActivity::class.java)
                 startActivity(intent)
-            } 
+            }
         }
+    }
+
+    private fun updateLabel() {
+        val myFormat = "MM.dd.yyyy"
+        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        userBirthday.setText(dateFormat.format(myCalendar.time))
     }
 
     private fun validate(): Boolean {
@@ -55,6 +76,9 @@ class MainActivity : AppCompatActivity() {
             return false
         } else if (surname.isEmpty() || surname.length < 2) {
             showHint(userSurname, "Фамилия должна содержать более 2 символов")
+            return false
+        } else if (birthday.isEmpty()) {
+            showHint(userBirthday, "Введите значение")
             return false
         } else if (password.isEmpty() || !password.contains(".")) {
             showHint(userPassword, "Слабый пароль. Добавьте цифры и другие символы")
