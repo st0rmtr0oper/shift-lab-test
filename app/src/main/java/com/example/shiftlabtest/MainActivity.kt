@@ -45,7 +45,13 @@ class MainActivity : AppCompatActivity() {
                 updateLabel()
             }
         userBirthday.editText?.setOnClickListener {
-            DatePickerDialog(this@MainActivity, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+            DatePickerDialog(
+                this@MainActivity,
+                date,
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
 
         registerButton = findViewById(R.id.regButton)
@@ -75,14 +81,23 @@ class MainActivity : AppCompatActivity() {
         if (name.isEmpty() || name.length < 2) {
             showHint(userName.editText, "Имя должно содержать более 2 символов")
             return false
+        } else if (name.contains("[0-9]".toRegex()) || name.contains("[!\"#$%&'()*+,./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
+            showHint(userName.editText, "Имя должно содержать только буквы")
+            return false
         } else if (surname.isEmpty() || surname.length < 2) {
             showHint(userSurname.editText, "Фамилия должна содержать более 2 символов")
+            return false
+        } else if (surname.contains("[0-9]".toRegex()) || surname.contains("[!\"#$%&'()*+,./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
+            showHint(userSurname.editText, "Фамилия должно содержать только буквы")
             return false
         } else if (birthday.isEmpty()) {
             showHint(userBirthday.editText, "Введите значение")
             return false
-        } else if (password.isEmpty() || !password.contains(".")) {
-            showHint(userPassword.editText, "Слабый пароль. Добавьте цифры и другие символы")
+        } else if (password.isEmpty() || (password.contains("[0-9]".toRegex())) || !password.contains("[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
+            showHint(userPassword.editText, "Слабый пароль. Добавьте цифры или другие символы")
+            return false
+        } else if (password.length < 5) {
+            showHint(userPassword.editText, "Пароль должен содержать более 5 символов")
             return false
         } else if (confirmedPassword.isEmpty() || confirmedPassword != password) {
             showHint(userConfirmedPassword.editText, "Пароли не сходятся")
