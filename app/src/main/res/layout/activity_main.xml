@@ -25,7 +25,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password confirm"
+            android:hint="Подтверждение пароля"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,8 +35,7 @@
         android:layout_width="220dp"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
-        android:text="ВОЙТИ"
-        android:enabled="false"
+        android:text="Регистрация"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="20sp"
@@ -65,7 +64,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Пароль"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +86,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="Имя"
             android:inputType="textCapSentences" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +107,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Surname"
+            android:hint="Фамилия"
             android:inputType="textCapSentences" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:hint="Date of birth"
+            android:hint="Дата рождения"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 

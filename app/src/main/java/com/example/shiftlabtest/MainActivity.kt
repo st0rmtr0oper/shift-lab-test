@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val myCalendar: Calendar = Calendar.getInstance()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             var check: Boolean = validate()
             if (check) {
                 val intent = Intent(this, SecondActivity::class.java)
+                intent.putExtra(
+                    "message", "Добро пожаловать, " + userName.editText?.text.toString()
+                            + ", мы рады вас видеть!!"
+                )
                 startActivity(intent)
             }
         }
@@ -96,7 +99,10 @@ class MainActivity : AppCompatActivity() {
         } else if (password.length < 5) {
             showHint(userPassword.editText, "Пароль должен содержать более 5 символов")
             return false
-        } else if (password.isEmpty() || !password.contains("[0-9]".toRegex()) || !password.contains("[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
+        } else if (password.isEmpty() || !password.contains("[0-9]".toRegex()) || !password.contains(
+                "[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex()
+            )
+        ) {
             showHint(userPassword.editText, "Слабый пароль. Добавьте цифры и другие символы")
             return false
         } else if (confirmedPassword.isEmpty() || confirmedPassword != password) {

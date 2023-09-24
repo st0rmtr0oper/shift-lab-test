@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        android:layout_margin="2dp"
+        android:inputType="textCapSentences"
+        >
+
+        <TextView
+            android:id="@+id/greetMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/ic_launcher_background"
+            android:textSize="20sp"
+            android:padding="4dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
