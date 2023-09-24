@@ -15,17 +15,17 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
-    //creating a variable for button "Register"
-    private lateinit var registerButton: Button
 
-    //creating variables for validation
+    private lateinit var registerButton: Button
     private lateinit var userName: TextInputLayout
     private lateinit var userSurname: TextInputLayout
     private lateinit var userBirthday: TextInputLayout
     private lateinit var userPassword: TextInputLayout
     private lateinit var userConfirmedPassword: TextInputLayout
 
-    val myCalendar: Calendar = Calendar.getInstance()
+    private val myCalendar: Calendar = Calendar.getInstance()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
