@@ -93,11 +93,11 @@ class MainActivity : AppCompatActivity() {
         } else if (birthday.isEmpty()) {
             showHint(userBirthday.editText, "Введите значение")
             return false
-        } else if (password.isEmpty() || (password.contains("[0-9]".toRegex())) || !password.contains("[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
-            showHint(userPassword.editText, "Слабый пароль. Добавьте цифры или другие символы")
-            return false
         } else if (password.length < 5) {
             showHint(userPassword.editText, "Пароль должен содержать более 5 символов")
+            return false
+        } else if (password.isEmpty() || !password.contains("[0-9]".toRegex()) || !password.contains("[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex())) {
+            showHint(userPassword.editText, "Слабый пароль. Добавьте цифры и другие символы")
             return false
         } else if (confirmedPassword.isEmpty() || confirmedPassword != password) {
             showHint(userConfirmedPassword.editText, "Пароли не сходятся")
